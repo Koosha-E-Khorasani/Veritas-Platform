@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    restart: always
+    environment:
+      POSTGRES_DB: veritas
+      POSTGRES_USER: veritas_user
+      POSTGRES_PASSWORD: changeLaterInProd
+
+  adminer:
+   image: adminer:latest
+   ports:
+     - 8888:8080
+   restart: always
