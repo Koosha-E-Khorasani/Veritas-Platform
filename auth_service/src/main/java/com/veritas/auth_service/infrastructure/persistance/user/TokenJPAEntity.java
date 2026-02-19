@@ -22,6 +22,10 @@ public class TokenJPAEntity {
     LocalDateTime createdDate;
     String hash;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    UserJPAEntity user;
+
     @PrePersist
     public void prePersist() {
         createdDate = LocalDateTime.now();

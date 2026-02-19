@@ -1,12 +1,11 @@
 package com.veritas.auth_service.infrastructure.persistance.user;
 
+import com.veritas.auth_service.infrastructure.persistance.user_role.UserRoleJPAEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(name = "users")
@@ -28,11 +27,11 @@ public class UserJPAEntity {
     private LocalDateTime lastLogin;
     private LocalDateTime created;
     private LocalDateTime updated;
-    private List<UUID> roleId = new ArrayList<>();
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
-    @JoinColumn(name = "token_id",referencedColumnName = "id")
-    private TokenJPAEntity token;
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "userJPAEntity"
+            ,cascade = CascadeType.ALL,orphanRemoval = true)
+    Set<UserRoleJPAEntity> roles = new HashSet<>();
+
     @PrePersist
     public void prePersist() {
         this.created = LocalDateTime.now();
