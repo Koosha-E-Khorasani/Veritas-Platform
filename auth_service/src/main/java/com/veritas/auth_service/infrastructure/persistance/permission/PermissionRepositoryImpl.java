@@ -2,14 +2,24 @@ package com.veritas.auth_service.infrastructure.persistance.permission;
 
 import com.veritas.auth_service.application.outbound_port.PermissionRepository;
 import com.veritas.auth_service.domain.permission.Permission;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.UUID;
 
+@Repository
 public class PermissionRepositoryImpl implements PermissionRepository {
+
+    PermissionJPARepository permissionJPARepository;
+    public PermissionRepositoryImpl(PermissionJPARepository permissionRepository) {
+        this.permissionJPARepository = permissionRepository;
+    }
+
+
     @Override
     public List<Permission> findAll() {
-        return List.of();
+        return permissionJPARepository.findAll();
+
     }
 
     @Override

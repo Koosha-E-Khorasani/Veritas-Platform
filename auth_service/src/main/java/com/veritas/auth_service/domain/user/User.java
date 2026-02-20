@@ -9,7 +9,7 @@ import java.util.List;
 
 public class User {
     UserId  id;
-    Token  token;
+
     Username username;
     UserPassword password;
     UserEmail email;
@@ -18,7 +18,7 @@ public class User {
     LocalDateTime creationDate;
     LocalDateTime updateDate;
     List<RoleId> roleId;
-
+    List<TokenId> tokenIds;
     public UserId getId() {
         return id;
     }
@@ -27,12 +27,12 @@ public class User {
         this.id = id;
     }
 
-    public Token getToken() {
-        return token;
+    public List<TokenId> getTokenIds() {
+        return tokenIds;
     }
 
-    public void setToken(Token token) {
-        this.token = token;
+    public void setTokenIds(List<TokenId> tokenIds) {
+        this.tokenIds = tokenIds;
     }
 
     public Username getUsername() {

@@ -3,9 +3,7 @@ package com.veritas.auth_service.infrastructure.persistance.permission;
 import com.veritas.auth_service.domain.permission.PermissionId;
 import com.veritas.auth_service.infrastructure.persistance.role.RoleJPAEntity;
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Set;
 import java.util.UUID;
@@ -13,6 +11,7 @@ import java.util.UUID;
 @Table(name = "permissions")
 @Getter
 @Setter
+@NoArgsConstructor
 @EqualsAndHashCode
 public class PermissionJPAEntity {
     @Id
