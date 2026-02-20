@@ -11,10 +11,8 @@ import java.util.*;
 @Table(name = "users")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-@Builder
 public class UserJPAEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -24,6 +22,7 @@ public class UserJPAEntity {
     @Column(unique = true)
     private String username;
     private String password;
+    private boolean isVerified;
     private LocalDateTime lastLogin;
     private LocalDateTime created;
     private LocalDateTime updated;

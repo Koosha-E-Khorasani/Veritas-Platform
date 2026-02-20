@@ -19,6 +19,24 @@ public class User {
     LocalDateTime updateDate;
     List<RoleId> roleId;
     List<TokenId> tokenIds;
+
+    public User(UserId id, Username username,
+                UserPassword password, UserEmail email,
+                boolean isVerified, LocalDateTime lastLogin,
+                LocalDateTime creationDate, LocalDateTime updateDate,
+                List<RoleId> roleId, List<TokenId> tokenIds) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.isVerified = isVerified;
+        this.lastLogin = lastLogin;
+        this.creationDate = creationDate;
+        this.updateDate = updateDate;
+        this.roleId = roleId;
+        this.tokenIds = tokenIds;
+    }
+
     public UserId getId() {
         return id;
     }

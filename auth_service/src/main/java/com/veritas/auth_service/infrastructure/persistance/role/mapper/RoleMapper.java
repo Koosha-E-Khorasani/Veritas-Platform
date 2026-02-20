@@ -14,7 +14,7 @@ import java.util.Set;
 
 public class RoleMapper {
 
-    public Role mapRoleJPAEntityToRole(RoleJPAEntity roleJpaEntity) {
+    public static Role toDomainObject(RoleJPAEntity roleJpaEntity) {
         return new Role(new RoleId(roleJpaEntity.getRoleId()),
                 roleJpaEntity.getName(),
                 roleJpaEntity.getDescription(),
@@ -23,7 +23,7 @@ public class RoleMapper {
                 );
     }
 
-    public RoleJPAEntity mapRoleToRoleJPAEntity(Role role, Set<UserRoleJPAEntity> userRoleJPAEntities, Set<PermissionJPAEntity> permissionJPAEntities) {
+    public static RoleJPAEntity toJPAEntity(Role role, Set<UserRoleJPAEntity> userRoleJPAEntities, Set<PermissionJPAEntity> permissionJPAEntities) {
         RoleJPAEntity roleJPAEntity =  new RoleJPAEntity();
         roleJPAEntity.setRoleId(role.getRoleId().roleId());
         roleJPAEntity.setName(role.getName());
@@ -33,12 +33,12 @@ public class RoleMapper {
         return roleJPAEntity;
     }
 
-    public List<RoleJPAEntity> mapRolesToRoleJPAEntities(
+    public static List<RoleJPAEntity> toJPAEntities(
                                                          Map<Role,Set<UserRoleJPAEntity>> userRoleMap,
                                                          Map<Role,Set<PermissionJPAEntity>> rolePermissionMap) {
-        return userRoleMap.entrySet().stream().map(role -> mapRoleToRoleJPAEntity(role.getKey(),role.getValue(),rolePermissionMap.get(role))).toList();
+        return userRoleMap.entrySet().stream().map(role -> toJPAEntity(role.getKey(),role.getValue(),rolePermissionMap.get(role))).toList();
     }
-    public List<Role> mapRoleJPAEntitiesToRoles(Set<RoleJPAEntity> roleJPAEntities) {
-        return roleJPAEntities.stream().map(roleJPA -> mapRoleJPAEntityToRole(roleJPA)).toList();
+    public static List<Role> toDomainObjects(Set<RoleJPAEntity> roleJPAEntities) {
+        return roleJPAEntities.stream().map(roleJPA -> toDomainObject(roleJPA)).toList();
     }
 }

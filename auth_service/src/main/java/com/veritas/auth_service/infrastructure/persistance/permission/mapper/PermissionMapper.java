@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class PermissionMapper {
 
-    public static PermissionJPAEntity mapPermissionToPermissionJPAEntity(Permission permission, Set<RoleJPAEntity> roles) {
+    public static PermissionJPAEntity toJPAEntity(Permission permission, Set<RoleJPAEntity> roles) {
         PermissionJPAEntity jpaEntity =  new PermissionJPAEntity();
         jpaEntity.setId(permission.getPermissionId().id());
         jpaEntity.setName(permission.getName());
@@ -19,7 +19,7 @@ public class PermissionMapper {
         return jpaEntity;
     }
 
-    public static Permission mapPermissionJPAEntityToPermission(PermissionJPAEntity permissionJPAEntity) {
+    public static Permission toDomainObject(PermissionJPAEntity permissionJPAEntity) {
         List<RoleId> roleIds = permissionJPAEntity.getRoles()
                 .stream()
                 .map(roleJPAEntity -> new RoleId(roleJPAEntity.getRoleId()))
@@ -28,17 +28,17 @@ public class PermissionMapper {
 
     }
 
-    public static List<Permission> mapPermissionJPAEntitiesToPermissions(List<PermissionJPAEntity> permissionJPAEntityList) {
+    public static List<Permission> toDomainObjects(List<PermissionJPAEntity> permissionJPAEntityList) {
         return permissionJPAEntityList
                 .stream()
-                .map(permissionJPAEntity ->mapPermissionJPAEntityToPermission(permissionJPAEntity))
+                .map(permissionJPAEntity ->toDomainObject(permissionJPAEntity))
                 .toList();
     }
 
-    public static List<PermissionJPAEntity> mapPermissionsToPermissionJPAEntities(Map<Permission,Set<RoleJPAEntity>> permissionsRoleMap) {
+    public static List<PermissionJPAEntity> toJPAEntities(Map<Permission,Set<RoleJPAEntity>> permissionsRoleMap) {
         return permissionsRoleMap.entrySet()
                 .stream()
-                .map(entry -> mapPermissionToPermissionJPAEntity(entry.getKey(), entry.getValue()))
+                .map(entry -> toJPAEntity(entry.getKey(), entry.getValue()))
                 .toList();
     }
 }
