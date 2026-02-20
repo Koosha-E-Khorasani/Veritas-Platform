@@ -18,6 +18,14 @@ public class Role {
         this.description = description;
     }
 
+    public Role(RoleId roleId, String name, String description, List<PermissionId> permissionIds, List<UserId> userIds) {
+        this.roleId = roleId;
+        this.name = name;
+        this.description = description;
+        this.permissionIds = permissionIds;
+        this.userIds = userIds;
+    }
+
     public RoleId getRoleId() {
         return roleId;
     }
