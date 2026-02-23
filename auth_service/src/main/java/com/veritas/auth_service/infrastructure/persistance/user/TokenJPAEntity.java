@@ -11,9 +11,8 @@ import java.util.UUID;
 @Table(name = "tokens")
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
-@AllArgsConstructor
+@EqualsAndHashCode
 public class TokenJPAEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

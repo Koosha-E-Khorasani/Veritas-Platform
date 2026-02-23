@@ -33,7 +33,7 @@ public class UserMapper {
         return userJPAEntity;
     }
 
-    public static List<UserJPAEntity> toJPAEntites(List<User> users, Map<User,Set<UserRoleJPAEntity>>  userRoleMap ) {
+    public static List<UserJPAEntity> toJPAEntities(List<User> users, Map<User,Set<UserRoleJPAEntity>>  userRoleMap ) {
         return users.stream().map(user-> toJPAEntity(user,userRoleMap.get(user))).toList();
     }
 
