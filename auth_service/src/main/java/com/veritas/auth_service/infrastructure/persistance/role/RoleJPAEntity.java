@@ -23,8 +23,7 @@ public class RoleJPAEntity {
     String name;
     String description;
 
-    @OneToMany(mappedBy = "roleJPAEntity",cascade = CascadeType.ALL,
-            orphanRemoval = true,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "roleJPAEntity",fetch = FetchType.LAZY)
     Set<UserRoleJPAEntity> userRoles;
 
     @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
@@ -34,4 +33,15 @@ public class RoleJPAEntity {
             inverseJoinColumns = @JoinColumn(name = "permission_id")
     )
     Set<PermissionJPAEntity> permissions;
+
+
+    public void addPermission(PermissionJPAEntity permissionJPAEntity) {
+        permissions.add(permissionJPAEntity);
+        permissionJPAEntity.getRoles().add(this);
+    }
+
+    public void removePermission(PermissionJPAEntity permissionJPAEntity) {
+        permissions.remove(permissionJPAEntity);
+        permissionJPAEntity.getRoles().remove(this);
+    }
 }

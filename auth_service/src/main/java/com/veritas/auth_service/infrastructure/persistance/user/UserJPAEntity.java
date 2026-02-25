@@ -40,4 +40,15 @@ public class UserJPAEntity {
     public void preUpdate() {
         this.updated = LocalDateTime.now();
     }
+
+    public void addRole(UserRoleJPAEntity userRoleJPAEntity) {
+        this.roles.add(userRoleJPAEntity);
+        userRoleJPAEntity.setUserJPAEntity(this);
+    }
+
+    public void deleteRole(UserRoleJPAEntity userRoleJPAEntity) {
+        this.roles.remove(userRoleJPAEntity);
+        userRoleJPAEntity.setUserJPAEntity(null);
+    }
+
 }

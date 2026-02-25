@@ -13,5 +13,7 @@ public interface PermissionRepository {
     void save(Permission permission);
     void delete(UUID permissionId);
     void update(Permission permission);
+    void getPermissionsWithUserId(UUID id);
+    void getPermissionsWithRoleId(UUID id);
 
 }

@@ -24,7 +24,7 @@ public class PermissionRepositoryImpl implements PermissionRepository {
 
     @Override
     public Permission findById(UUID id) {
-        return null;
+        return permissionJPARepository.find;
     }
 
     @Override
@@ -49,6 +49,16 @@ public class PermissionRepositoryImpl implements PermissionRepository {
 
     @Override
     public void update(Permission permission) {
+
+    }
+
+    @Override
+    public void getPermissionsWithUserId(UUID id) {
+
+    }
+
+    @Override
+    public void getPermissionsWithRoleId(UUID id) {
 
     }
 }

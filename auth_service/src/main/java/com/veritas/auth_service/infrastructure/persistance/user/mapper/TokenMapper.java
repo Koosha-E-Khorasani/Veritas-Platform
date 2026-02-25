@@ -2,11 +2,9 @@ package com.veritas.auth_service.infrastructure.persistance.user.mapper;
 
 import com.veritas.auth_service.domain.user.Token;
 import com.veritas.auth_service.domain.user.TokenId;
-import com.veritas.auth_service.domain.user.User;
-import com.veritas.auth_service.infrastructure.persistance.role.RoleJPAEntity;
 import com.veritas.auth_service.infrastructure.persistance.user.TokenJPAEntity;
 import com.veritas.auth_service.infrastructure.persistance.user.UserJPAEntity;
-import org.springframework.boot.security.autoconfigure.SecurityProperties;
+
 
 import java.util.List;
 import java.util.Map;
