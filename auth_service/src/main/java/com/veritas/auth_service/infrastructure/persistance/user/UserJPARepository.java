@@ -9,4 +9,5 @@ import java.util.UUID;
 
 
 public interface UserJPARepository extends CrudRepository<UserJPAEntity,UUID>{
+    UserJPAEntity findByEmail(String email);
 }

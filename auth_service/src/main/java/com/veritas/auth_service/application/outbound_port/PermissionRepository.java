@@ -7,13 +7,13 @@ import java.util.UUID;
 
 public interface PermissionRepository {
     List<Permission> findAll();
+    Permission findPermissionById(UUID id);
     Permission findById(UUID id);
     List<Permission> findByRoleId(UUID roleId);
     List<Permission> findByUserID(UUID userId);
     void save(Permission permission);
     void delete(UUID permissionId);
     void update(Permission permission);
-    void getPermissionsWithUserId(UUID id);
-    void getPermissionsWithRoleId(UUID id);
+
 
 }

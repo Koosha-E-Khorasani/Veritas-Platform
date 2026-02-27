@@ -3,7 +3,7 @@ package com.veritas.auth_service.infrastructure.persistance.permission;
 
 import org.junit.jupiter.api.Test;
 
-public class PermissionMapperTest {
+public class PermissionMapperTest extends BasePermissionsTest {
 
     @Test
     public void convert_domain_to_jpa(){

@@ -23,8 +23,12 @@ public class PermissionRepositoryImpl implements PermissionRepository {
     }
 
     @Override
+    public Permission findPermissionById(UUID id) {
+        return null;
+    }
+
+    @Override
     public Permission findById(UUID id) {
-        return permissionJPARepository.find;
     }
 
     @Override
@@ -52,13 +56,4 @@ public class PermissionRepositoryImpl implements PermissionRepository {
 
     }
 
-    @Override
-    public void getPermissionsWithUserId(UUID id) {
-
-    }
-
-    @Override
-    public void getPermissionsWithRoleId(UUID id) {
-
-    }
 }

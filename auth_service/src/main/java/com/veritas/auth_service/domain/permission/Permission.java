@@ -13,7 +13,7 @@ public class Permission {
 
         public Permission(String permissionName){
             this.name = permissionName;
-            permissionId = new PermissionId();
+
         }
 
         public Permission(UUID permissionId, String permissionName,List<RoleId> roleIds){
